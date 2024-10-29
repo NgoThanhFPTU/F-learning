@@ -15,7 +15,7 @@ const [profileData, setProfileData] = useState({ name: '', email: '', username: 
   useEffect(() => {
     const userid = localStorage.getItem('userName');    
   
-    fetch(`http://localhost:8080/profiledata?name=${userid}`)
+    fetch(`http://localhost:5000/profiledata?name=${userid}`)
       .then(response => response.json())
       .then(data => setProfileData({ userName: data.userName, email:data.email,name:data.name,password:data.password,batch:data.batch,courseid:data.courseIds }))
       .catch(error => console.error('Error fetching progress data:', error));

@@ -13,7 +13,7 @@ const GradeQuiz = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/teacher/courses', {
+                const response = await axios.get('http://localhost:5000/teacher/courses', {
                     params: { teacherId }
                 });
                 const courses = response.data;
@@ -32,7 +32,7 @@ const GradeQuiz = () => {
         const fetchBatches = async () => {
             try {
                 if (selectedCourse) {
-                    const response = await axios.get('http://localhost:8080/teacher/batches', {
+                    const response = await axios.get('http://localhost:5000/teacher/batches', {
                         params: { teacherId }
                     });
                     const batches = response.data.filter(batch => batch.courseIds.includes(selectedCourse));
@@ -52,7 +52,7 @@ const GradeQuiz = () => {
         const fetchQuizzes = async () => {
             try {
                 if (selectedCourse && selectedBatch) {
-                    const response = await axios.get('http://localhost:8080/quizzes', {
+                    const response = await axios.get('http://localhost:5000/quizzes', {
                         params: { courseId: selectedCourse, batchId: selectedBatch  }
                     });
                     setQuizzes(response.data);
@@ -94,7 +94,7 @@ const GradeQuiz = () => {
 
     const handleAddGrade = async () => {
         try {
-            await axios.post('http://localhost:8080/grades', { courseId: selectedCourse, batchId: selectedBatch, grades });
+            await axios.post('http://localhost:5000/grades', { courseId: selectedCourse, batchId: selectedBatch, grades });
             console.log('Grades added successfully');
             setGrades([]);
         } catch (error) {

@@ -15,13 +15,13 @@ export default function TeacherAttendance() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/teacher/courses', {
+      const response = await axios.get('http://localhost:5000/teacher/courses', {
         params: { teacherId }
       });
       const courses = response.data;
       
       const updatedCourses = await Promise.all(courses.map(async course => {
-        const batchesResponse = await axios.get('http://localhost:8080/teacher/batches', {
+        const batchesResponse = await axios.get('http://localhost:5000/teacher/batches', {
           params: { teacherId }
         });
       
@@ -29,7 +29,7 @@ export default function TeacherAttendance() {
 
     
         const updatedBatches = await Promise.all(batches.map(async batch => {
-          const studentsResponse = await axios.get(`http://localhost:8080/studentsattendance?courseId=${course.courseId}&batchId=${batch.batchId}`);
+          const studentsResponse = await axios.get(`http://localhost:5000/studentsattendance?courseId=${course.courseId}&batchId=${batch.batchId}`);
           const students = studentsResponse.data;
           return { ...batch, students };
         }));
@@ -45,7 +45,7 @@ export default function TeacherAttendance() {
 
   const updateStudentAttendance = async (courseId, batchId, studentId, present) => {
     try {
-      await axios.put(`http://localhost:8080/attendance/${courseId}/${batchId}/${studentId}`, { present });
+      await axios.put(`http://localhost:5000/attendance/${courseId}/${batchId}/${studentId}`, { present });
       setAttendanceData(prevData =>
         prevData.map(course => {
           if (course._id === courseId) {

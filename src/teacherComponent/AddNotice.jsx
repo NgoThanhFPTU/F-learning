@@ -9,7 +9,7 @@ const AddNotice = ({ courseId, batchId }) => {
 
     const handleAddNotice = async () => {
         try {
-            await axios.post('http://localhost:8080/notices', { courseId, batchId, title, content });
+            await axios.post('http://localhost:5000/notices', { courseId, batchId, title, content });
             console.log('Notice added successfully');
             setTitle('');
             setContent('');

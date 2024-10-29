@@ -8,16 +8,16 @@ const Signin = () => {
   });
 const [error,setError]=useState("");
 const handleChange=({currentTarget:input}) =>{
-  setData({...data,[input.email]:input.value});
+  setData({...data,[input.name]:input.value});
 };
 const navigate=useNavigate();
 const handleSubmit= async (e)=>{
   e.preventDefault();
   try{
-    const url="http://localhost:8080/login"
+    const url="http://localhost:5000/login"
     const {data:res}=await axios.post(url,data);
   
-    navigate("/singin")
+    navigate("/signin")
   }catch(error){
     if(error.response && error.response.status>=400 && error.response.status<=500){
       setError(error.response.data.message);
@@ -80,7 +80,6 @@ Unlock a world of knowledge and possibilities. Sign in now to access exclusive e
                 data-wait="Please wait..."
                 className="qk5ppt7d"
                 style={{color:"white"}}
-                onSubmit={handleSubmit}
               />
             </div>
           </form>

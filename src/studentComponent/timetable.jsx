@@ -9,7 +9,7 @@ const Timetable = () => {
     const studentId = localStorage.getItem('userName');
     const fetchTimetableData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/studenttimetable/${studentId}`);
+        const response = await axios.get(`http://localhost:5000/studenttimetable/${studentId}`);
         setTimetableData(response.data);
       } catch (error) {
         console.error('Error fetching timetable data:', error);

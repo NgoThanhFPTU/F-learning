@@ -21,7 +21,7 @@ function AdminDashboard() {
     // Fetch profile data
    
     // Fetch sessions
-    fetch('http://localhost:8080/courses')
+    fetch('http://localhost:5000/courses')
       .then(response => response.json())
       .then(data => {
         setSessionData(data.map(course => ({
@@ -32,7 +32,7 @@ function AdminDashboard() {
       });
 
     // Fetch batches
-    fetch('http://localhost:8080/batches')
+    fetch('http://localhost:5000/batches')
       .then(response => response.json())
       .then(data => {
         setBatchData(data.map(batch => ({
@@ -43,7 +43,7 @@ function AdminDashboard() {
       });
 
     // Fetch faculties
-    fetch('http://localhost:8080/teachers')
+    fetch('http://localhost:5000/teachers')
       .then(response => response.json())
       .then(data => {
         setFacultiesData(data.map(teacher => ({

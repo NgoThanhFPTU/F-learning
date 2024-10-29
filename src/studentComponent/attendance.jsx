@@ -5,7 +5,7 @@ export default function Attendance() {
   const studentId = localStorage.getItem('userName'); // Replace with dynamic student ID
 
   useEffect(() => {
-        fetch(`http://localhost:8080/student/attendance/${studentId}`)
+        fetch(`http://localhost:5000/student/attendance/${studentId}`)
         .then(response => response.json())
         .then(data => setAttendanceData(data))
         .catch(error => console.error('Error fetching attendance data:', error));

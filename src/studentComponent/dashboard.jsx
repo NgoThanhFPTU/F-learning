@@ -19,20 +19,20 @@ function Dashboard() {
    
     const email = localStorage.getItem('userEmail');
 
-    fetch(`http://localhost:8080/profiledata?name=${userid}`)
+    fetch(`http://localhost:5000/profiledata?name=${userid}`)
     .then(response => response.json())
     .then(data => setProfileData({ email:data.email,name:data.name }))
     .catch(error => console.error('Error fetching progress data:', error));
 
     
     // Fetch data for ProgressBar
-    fetch(`http://localhost:8080/studentprogress?name=${userid}`)
+    fetch(`http://localhost:5000/studentprogress?name=${userid}`)
       .then(response => response.json())
       .then(data => setProgressBarData(data))
       .catch(error => console.error('Error fetching progress data:', error));
 
     // Fetch data for Sessions
-    fetch(`http://localhost:8080/studentsessions?name=${userid}`)
+    fetch(`http://localhost:5000/studentsessions?name=${userid}`)
       .then(response => response.json())
       .then(data => {
         setSessionData(data);
@@ -41,13 +41,13 @@ function Dashboard() {
       .catch(error => console.error('Error fetching session data:', error));
 
     // Fetch data for Batches
-    fetch(`http://localhost:8080/studentfaculty?name=${userid}`)
+    fetch(`http://localhost:5000/studentfaculty?name=${userid}`)
       .then(response => response.json())
       .then(data => setFacultydata(data))
       .catch(error => console.error('Error fetching batch data:', error));
 
     // Fetch data for Leaves
-    fetch(`http://localhost:8080/studentquizes?name=${userid}`)
+    fetch(`http://localhost:5000/studentquizes?name=${userid}`)
       .then(response => response.json())
       .then(data => setEventdata(data))
       .catch(error => console.error('Error fetching leave data:', error));

@@ -16,13 +16,13 @@ const TeacherCourse = () => {
   useEffect(() => {
     const fetchTeacherData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/teacher/courses', {
+        const response = await axios.get('http://localhost:5000/teacher/courses', {
           params: { teacherId }
         });
         const courses = response.data;
 
         const updatedCourses = await Promise.all(courses.map(async course => {
-          const batchesResponse = await axios.get('http://localhost:8080/teacher/batches', {
+          const batchesResponse = await axios.get('http://localhost:5000/teacher/batches', {
             params: { teacherId }
           });
 
@@ -30,7 +30,7 @@ const TeacherCourse = () => {
         
 
           const updatedBatches = await Promise.all(batches.map(async batch => {
-            const studentsResponse = await axios.get(`http://localhost:8080/studentsattendance?courseId=${course.courseId}&batchId=${batch.batchId}`);
+            const studentsResponse = await axios.get(`http://localhost:5000/studentsattendance?courseId=${course.courseId}&batchId=${batch.batchId}`);
             const students = studentsResponse.data;
             return { ...batch, students };
           }));

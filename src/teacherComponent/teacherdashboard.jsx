@@ -18,19 +18,19 @@ function TeacherDashboard() {
   useEffect(() => {
     const userid = localStorage.getItem('userName');
    
-    fetch(`http://localhost:8080/teacherprofiledata?name=${userid}`)
+    fetch(`http://localhost:5000/teacherprofiledata?name=${userid}`)
           .then(response => response.json())
           .then(data => setProfileData({ email:data.email,name:data.name }))
           .catch(error => console.error('Error fetching progress data:', error));
        
     // Fetch data for ProgressBar
-    fetch(`http://localhost:8080/teacherprogress?name=${userid}`)
+    fetch(`http://localhost:5000/teacherprogress?name=${userid}`)
       .then(response => response.json())
       .then(data => setProgressBarData(data))
       .catch(error => console.error('Error fetching progress data:', error));
 
     // Fetch data for Sessions
-    fetch(`http://localhost:8080/teachersessions?name=${userid}`)
+    fetch(`http://localhost:5000/teachersessions?name=${userid}`)
       .then(response => response.json())
       .then(data => {
         setSessionData(data);
@@ -39,13 +39,13 @@ function TeacherDashboard() {
       .catch(error => console.error('Error fetching session data:', error));
 
     // Fetch data for Batches
-    fetch(`http://localhost:8080/teacherbatches?name=${userid}`)
+    fetch(`http://localhost:5000/teacherbatches?name=${userid}`)
       .then(response => response.json())
       .then(data => setBatchData(data))
       .catch(error => console.error('Error fetching batch data:', error));
 
     // Fetch data for Leaves
-    fetch(`http://localhost:8080/teacherleaves?name=${userid}`)
+    fetch(`http://localhost:5000/teacherleaves?name=${userid}`)
       .then(response => response.json())
       .then(data => setLeaveData(data))
       .catch(error => console.error('Error fetching leave data:', error));

@@ -15,7 +15,7 @@ const Course = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/coursedata?name=${userid}`);
+        const response = await axios.get(`http://localhost:5000/coursedata?name=${userid}`);
         setData(response.data.courses);
         setBatchName(response.data.batchName.batchName);
       } catch (error) {
@@ -23,7 +23,7 @@ const Course = () => {
       }
 
       try {
-        const quizResponse = await axios.get(`http://localhost:8080/studentquizes?name=${userid}`);
+        const quizResponse = await axios.get(`http://localhost:5000/studentquizes?name=${userid}`);
         setQuizzes(quizResponse.data);
       } catch (error) {
         console.error('Error fetching leave data:', error);

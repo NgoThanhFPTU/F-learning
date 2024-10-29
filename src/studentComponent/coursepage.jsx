@@ -13,7 +13,7 @@ const CoursePage = () => {
       const lastPathSegment = getLastPathSegment(currentUrl);
       
       try {
-        const response = await axios.get(`http://localhost:8080/coursedata?name=${userid}`);
+        const response = await axios.get(`http://localhost:5000/coursedata?name=${userid}`);
         setBatchName(response.data.batchName);
       } catch (error) {
         console.error('Error fetching progress data:', error);
@@ -21,7 +21,7 @@ const CoursePage = () => {
 
 
       try {
-        const response = await fetch(`http://localhost:8080/course/${lastPathSegment}?studentId=${userid}`);
+        const response = await fetch(`http://localhost:5000/course/${lastPathSegment}?studentId=${userid}`);
         if (!response.ok) {
           throw new Error('Failed to fetch course data');
         }
@@ -41,7 +41,7 @@ const CoursePage = () => {
     const lastPathSegment = getLastPathSegment(currentUrl);
 
     try {
-      const response = await fetch('http://localhost:8080/grades/attempt', {
+      const response = await fetch('http://localhost:5000/grades/attempt', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

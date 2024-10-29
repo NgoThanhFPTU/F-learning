@@ -11,7 +11,7 @@ const AddQuiz = ({ courseId, batchId }) => {
         
         try {
             const quizId = Date.now().toString().slice(0,5) + Math.floor(Math.random() * 1000).toString();
-            await axios.post('http://localhost:8080/quizzes', { courseId, batchId, quizName, quizTime, quizId, grade, link });
+            await axios.post('http://localhost:5000/quizzes', { courseId, batchId, quizName, quizTime, quizId, grade, link });
             console.log('Quiz added successfully');
             setQuizName('');
             setQuizTime('');

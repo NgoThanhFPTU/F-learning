@@ -12,7 +12,7 @@ const TeacherTimetable = () => {
 
   const fetchTimetableData = async () => {
 
-      fetch(`http://localhost:8080/teachersessions?name=${teacherId}`)
+      fetch(`http://localhost:5000/teachersessions?name=${teacherId}`)
   .then(response => response.json())
   .then(data => {
    

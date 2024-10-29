@@ -12,7 +12,7 @@ const ApplyLeave = () => {
   const [leaveHistory, setLeaveData] = useState([]);
   useEffect(() => {
     const userId = localStorage.getItem('userName'); 
-    fetch(`http://localhost:8080/teacherleaves?name=${userId}`)
+    fetch(`http://localhost:5000/teacherleaves?name=${userId}`)
       .then(response => response.json())
       .then(data => setLeaveData(data))
       .catch(error => console.error('Error fetching leave data:', error));
@@ -39,7 +39,7 @@ const ApplyLeave = () => {
       status: 'Pending',
     };
     // Make a POST request to add leave request
-    fetch('http://localhost:8080/leave', {
+    fetch('http://localhost:5000/leave', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
